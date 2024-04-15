@@ -150,7 +150,7 @@ impl Sender for Transmission {
                     .send_timeout(event.clone(), DEFAULT_SEND_TIMEOUT)
                     .map_err(|e| {
                         response_sender
-                            .send(Response {
+                            .try_send(Response {
                                 status_code: None,
                                 body: None,
                                 duration: clock.elapsed(),
